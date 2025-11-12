@@ -9,16 +9,16 @@ export default function AdminDashboard() {
 
   // Sample quiz questions with answers
   const quizQuestions = [
-    { question: "Which protocol finds MAC from IP?", answer: "ARP" },
-    { question: "Which OSI layer handles routing?", answer: "Network" },
-    { question: "Default HTTP port?", answer: "80" },
-    { question: "Device at Layer 2?", answer: "Switch" },
-    { question: "Command for IP info (Windows)?", answer: "ipconfig" },
-    { question: "DHCP stands for?", answer: "Dynamic Host Configuration Protocol" },
-    { question: "Private IP address?", answer: "192.168.1.1" },
-    { question: "Command to test connectivity?", answer: "ping" },
-    { question: "IPv6 has how many bits?", answer: "128" },
-    { question: "Which layer ensures delivery?", answer: "Transport" },
+    { question: "What is the loopback IPv4 address?", options: ["0.0.0.0", "255.255.255.0", "127.0.0.1", "192.168.1.1"], answer: "127.0.0.1" },
+    { question: "Which IPv4 address is a private address?", options: ["8.8.8.8", "10.1.1.1", "172.32.0.1", "192.169.1.1"], answer: "10.1.1.1" },
+    { question: "What is the purpose of VTP?", options: ["To prioritize voice traffic", "To encrypt trunk links", "To synchronize VLAN databases", "To tunnel VPN traffic"], answer: "To synchronize VLAN databases" },
+    { question: "What is the correct order of the OSI model layers?", options: ["Physical, Data Link, Network, Transport, Session, Presentation, Application", "Application, Presentation, Session, Transport, Network, Data Link, Physical", "Physical, Network, Data Link, Transport, Session, Presentation, Application", "Physical, Data Link, Transport, Network, Session, Presentation, Application"], answer: "Application, Presentation, Session, Transport, Network, Data Link, Physical" },
+    { question: "What is a socket?", options: ["IP + MAC", "Subnet + Gateway", "IP + Port", "MAC + Port"], answer: "IP + Port" },
+    { question: "Which IPv4 address is APIPA-assigned?", options: ["10.0.0.1", "172.16.0.1", "169.254.1.1", "192.168.1.5"], answer: "169.254.1.1" },
+    { question: "What is the IEEE standard for Ethernet?", options: ["802.1Q", "802.11", "802.1X", "802.3"], answer: "802.3" },
+    { question: "Which layer encapsulates segments into packets?", options: ["Physical", "Network", "Data Link", "Transport"], answer: "Network" },
+    { question: "What is the purpose of an IP helper address?", options: ["To resolve ARP requests", "To forward DHCP broadcasts", "To load balance DNS", "To tunnel VPN traffic"], answer: "To forward DHCP broadcasts" },
+    { question: "What does a switch do when it receives a frame with an unknown destination MAC address?", options: ["Sends an ICMP error message", "Drops the frame", "Floods the frame to all ports except the ingress port", "Forwards the frame to the default gateway"], answer: "Floods the frame to all ports except the ingress port" },
   ];
 
   const fetchUsers = async () => {

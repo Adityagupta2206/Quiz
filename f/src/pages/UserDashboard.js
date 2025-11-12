@@ -1,8 +1,8 @@
+// UserDashboard.jsx
 import React, { useState, useEffect } from "react";
 import API from "../api";
 import { getAuth, clearAuth, updateLocalScore } from "../auth";
 import { useNavigate } from "react-router-dom";
-import "./UserDashboard.css"; // optional CSS file for hover effects
 
 export default function UserDashboard() {
   const auth = getAuth();
@@ -28,7 +28,6 @@ export default function UserDashboard() {
     { question: "What does a switch do when it receives a frame with an unknown destination MAC address?", options: ["Sends an ICMP error message", "Drops the frame", "Floods the frame to all ports except the ingress port", "Forwards the frame to the default gateway"], answer: "Floods the frame to all ports except the ingress port" },
   ];
 
-  // --- Check cooldown ---
   useEffect(() => {
     const checkCooldown = async () => {
       try {
@@ -49,18 +48,15 @@ export default function UserDashboard() {
     checkCooldown();
   }, [username]);
 
-  // --- Logout ---
   const handleLogout = () => {
     clearAuth();
     navigate("/login");
   };
 
-  // --- Select Answer ---
   const handleAnswerSelect = (qIndex, option) => {
     setSelectedAnswers({ ...selectedAnswers, [qIndex]: option });
   };
 
-  // --- Submit Quiz ---
   const handleSubmitQuiz = async () => {
     let newScore = 0;
     questions.forEach((q, i) => {
@@ -80,7 +76,7 @@ export default function UserDashboard() {
       console.error("Error submitting quiz:", err);
     }
 
-    alert(`✅ Quiz Submitted! You scored ${newScore} points.`);
+    navigate("/result", { state: { questions, selectedAnswers, newScore } });
   };
 
   return (
@@ -105,28 +101,24 @@ export default function UserDashboard() {
 
       <p>Your Current Score: <b>{score}</b> points</p>
 
-      {/* Start Quiz */}
       {!quizStarted && !quizSubmitted && (
-        <div>
-          <button
-            onClick={() => setQuizStarted(true)}
-            disabled={cooldown}
-            style={{
-              background: cooldown ? "gray" : "#0275d8",
-              color: "white",
-              border: "none",
-              padding: "6px 15px",
-              borderRadius: "4px",
-              cursor: cooldown ? "not-allowed" : "pointer",
-              fontSize: "13px",
-            }}
-          >
-            {cooldown ? "Retest available after 24 hrs" : "Start Quiz"}
-          </button>
-        </div>
+        <button
+          onClick={() => setQuizStarted(true)}
+          disabled={cooldown}
+          style={{
+            background: cooldown ? "gray" : "#0275d8",
+            color: "white",
+            border: "none",
+            padding: "6px 15px",
+            borderRadius: "4px",
+            cursor: cooldown ? "not-allowed" : "pointer",
+            fontSize: "13px",
+          }}
+        >
+          {cooldown ? "Retest available after 24 hrs" : "Start Quiz"}
+        </button>
       )}
 
-      {/* Quiz Questions */}
       {quizStarted && (
         <div style={{ marginTop: "20px" }}>
           {questions.map((q, i) => (
@@ -168,14 +160,6 @@ export default function UserDashboard() {
           >
             Submit Quiz
           </button>
-        </div>
-      )}
-
-      {/* Result */}
-      {quizSubmitted && (
-        <div style={{ marginTop: "20px" }}>
-          <p style={{ color: "#5cb85c", fontWeight: "bold" }}>🎉 You scored <b>{score}</b> points.</p>
-          <p style={{ color: "#0275d8" }}>Retest will unlock after 24 hours.</p>
         </div>
       )}
     </div>
