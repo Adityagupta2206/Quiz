@@ -25,6 +25,11 @@ b/.vscode
 b/.idea
 
 
+
+# Ignore node_modules everywhere
+node_modules/
+
+
 # ====== React (Frontend) ======
 f/node_modules
 f/.env
