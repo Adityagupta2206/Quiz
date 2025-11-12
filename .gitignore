@@ -1,0 +1,58 @@
+# ====== Node.js (Backend) ======
+b/node_modules
+b/.env
+b/.pnp
+b/pnpm-lock.yaml
+b/yarn.lock
+b/package-lock.json
+
+# Logs
+b/npm-debug.log*
+b/yarn-debug.log*
+b/yarn-error.log*
+b/debug.log
+b/.DS_Store
+
+# Build files
+b/dist
+b/build
+
+# Coverage
+b/coverage
+
+# Misc
+b/.vscode
+b/.idea
+
+
+# ====== React (Frontend) ======
+f/node_modules
+f/.env
+f/.pnp
+f/pnpm-lock.yaml
+f/yarn.lock
+f/package-lock.json
+
+# Build output
+f/build
+f/dist
+
+# Coverage reports
+f/coverage
+
+# Logs
+f/npm-debug.log*
+f/yarn-debug.log*
+f/yarn-error.log*
+f/debug.log
+f/.DS_Store
+
+# Misc
+f/.vscode
+f/.idea
+
+
+# ====== Global Ignore ======
+.env
+.DS_Store
+*.log

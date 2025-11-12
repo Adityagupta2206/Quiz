@@ -1,0 +1,40 @@
+/* UserDashboard.css */
+
+/* MCQ option card hover */
+.mcq-option {
+  margin: 5px 0;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background: #f9f9f9;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s;
+}
+
+.mcq-option:hover {
+  background: #e0f7fa;
+  transform: scale(1.02);
+}
+
+.mcq-option.selected {
+  border: 2px solid #0275d8;
+  background: #d9edf7;
+}
+
+/* Submit button */
+.quiz-submit-btn {
+  background: #f0ad4e;
+  color: #333;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-top: 10px;
+  transition: all 0.2s;
+}
+
+.quiz-submit-btn:hover {
+  background: #ec971f;
+}
