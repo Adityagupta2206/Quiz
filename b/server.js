@@ -52,7 +52,7 @@ async function createAdmin() {
     console.error("❌ Error creating admin:", err);
   }
 }
-// createAdmin();
+ //createAdmin();
 
 // --- Signup ---
 app.post("/signup", async (req, res) => {
