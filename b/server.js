@@ -6,9 +6,15 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const cors = require("cors");
 
+
+const path = require("path");
+
+
 const app = express();
 app.use(express.json());
 app.use(cors());
+
+app.use(express.static(path.join(__dirname, "build")));
 
 // --- ENV Vars ---
 const PORT = process.env.PORT || 5000;
@@ -52,7 +58,7 @@ async function createAdmin() {
     console.error("❌ Error creating admin:", err);
   }
 }
- //createAdmin();
+// createAdmin();
 
 // --- Signup ---
 app.post("/signup", async (req, res) => {
@@ -166,6 +172,10 @@ app.get("/users", async (req, res) => {
     console.error("❌ Get Users Error:", err);
     res.status(500).json({ message: "Server error fetching users" });
   }
+});
+
+app.get(/(.*)/, (req, res) => {
+  res.sendFile(path.join(__dirname, "build", "index.html"));
 });
 
 // --- Root Test Route ---
